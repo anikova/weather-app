@@ -4,12 +4,16 @@ import styled from 'styled-components';
 
 // components
 import FlexWrapper from '../../components/FlexWrapper';
+import { MarginWrapper } from '../../components/SharedComponents';
 
 const ItemWrapper = styled(FlexWrapper)`
   border: 1px solid black;
   margin: 1rem;
   padding: 0.5rem;
   border-radius: 15px;
+  > * {
+    margin: 0.15rem;
+  }
 `;
 
 const StyledIcon = styled(FaArrowRight)`
@@ -29,7 +33,7 @@ const HourlyDetails = ({ hourly }: any) => {
 
   return (
     <>
-      <div>In the next 24 hours</div>
+      <MarginWrapper margin="1rem 0 0 0">In the next 24 hours</MarginWrapper>
       <FlexWrapper flexWrap="wrap" justifyContent="center" alignItems="center">
         {startIndex > 0 && (
           <StyledIcon
