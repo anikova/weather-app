@@ -12,8 +12,8 @@ function App() {
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path="/city-details/:id" component={CityDetails} />
         <Route exact path="/" component={LandingPage} />
+        <Route path="/city-details/:name" component={CityDetails} />
       </Switch>
     </Router>
   );
