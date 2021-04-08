@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { FaArrowLeft, FaArrowRight, FaSun } from 'react-icons/fa';
 import styled from 'styled-components';
+import moment from 'moment';
 
 // components
 import FlexWrapper from '../../components/FlexWrapper';
 import { MarginWrapper } from '../../components/SharedComponents';
+
+// utils
+import { getIcon } from '../../utils/iconsHelper';
 
 const ItemWrapper = styled(FlexWrapper)`
   border: 1px solid black;
@@ -29,7 +33,7 @@ const HourlyDetails = ({ hourly }: any) => {
 
   useEffect(() => {
     setDisplayArray(hourly.slice(startIndex, endIndex));
-  }, [startIndex, endIndex]);
+  }, [startIndex, endIndex, hourly]);
 
   return (
     <>
@@ -44,16 +48,18 @@ const HourlyDetails = ({ hourly }: any) => {
             }}
           />
         )}
-        {displayArray.map(({ dt: dateTime, temp }: any) => {
+        {displayArray.map(({ dt: dateTime, temp, weather }: any) => {
+          const { icon } = (weather && weather[0]) || { icon: '01d' };
+          const IconComponent = getIcon(icon);
           return (
             <ItemWrapper
               key={dateTime}
               flexDirection="column"
               alignItems="center"
             >
-              <span>{dateTime}</span>
-              <FaSun size={30} />
-              <span>{temp}&deg;</span>
+              <span>{moment.unix(dateTime).format('HH:mm')}</span>
+              <IconComponent size={30} />
+              <span>{Math.round(temp)}&deg;</span>
             </ItemWrapper>
           );
         })}

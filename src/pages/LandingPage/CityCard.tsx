@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaCloudSun, FaWind } from 'react-icons/fa';
+import { FaWind } from 'react-icons/fa';
 import { IoMdWater } from 'react-icons/io';
 
 // components
@@ -11,7 +11,10 @@ import {
   StyledLink,
 } from '../../components/SharedComponents';
 
-const CardWrapper = styled.div`
+// utils
+import { getBackground, getIcon } from '../../utils/iconsHelper';
+
+const CardWrapper = styled.div<{ icon: string }>`
   position: relative;
   border: 1px solid gray;
   border-radius: 20px;
@@ -19,7 +22,8 @@ const CardWrapper = styled.div`
   margin: 2rem;
   min-width: 300px;
   box-shadow: 0 0 8px 6px lightgray;
-  background: linear-gradient(150deg, #fd746c8c 0%, #3f51b55e 70%);
+  background: ${({ icon }) => icon && getBackground(icon)};
+  color: ${({ icon }) => (icon.indexOf('d') === -1 ? 'white' : 'black')};
   cursor: pointer;
   transition: all 0.5s;
 
@@ -37,9 +41,10 @@ const CardWrapper = styled.div`
   }
 `;
 
-const LabelsWrapper = styled.div`
+const LabelsWrapper = styled.div<{ color: string }>`
   text-align: center;
   margin-top: 1rem;
+  color: black;
 `;
 
 const CityCard = ({ city }: any) => {
@@ -49,19 +54,19 @@ const CityCard = ({ city }: any) => {
     name,
     wind: { speed },
   } = city;
-  const { main: description } = weather[0];
-
+  const { main: description, icon } = weather[0];
+  const IconComponent = getIcon(icon);
   return (
-    <CardWrapper>
+    <CardWrapper icon={icon}>
       <div>
         <FlexWrapper justifyContent="space-around">
-          <FaCloudSun size={100} />
+          <IconComponent size={100} />
           <FlexWrapper flexDirection="column">
             <FontWrapper fontSize="1.5rem">{name}</FontWrapper>
-            <FontWrapper fontSize="4rem">{temp} &deg;</FontWrapper>
+            <FontWrapper fontSize="4rem">{Math.round(temp)} &deg;</FontWrapper>
           </FlexWrapper>
         </FlexWrapper>
-        <LabelsWrapper>
+        <LabelsWrapper color={icon.indexOf('d') === -1 ? 'white' : 'black'}>
           <PillLabel>{description}</PillLabel>
           <PillLabel>
             <IoMdWater />

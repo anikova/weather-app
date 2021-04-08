@@ -1,9 +1,11 @@
 import React from 'react';
-import { FaSun } from 'react-icons/fa';
 import styled from 'styled-components';
 
 // components
 import FlexWrapper from '../../components/FlexWrapper';
+
+// utils
+import { getIcon } from '../../utils/iconsHelper';
 
 const DescriptionWrapper = styled.div`
   font-size: 4rem;
@@ -11,6 +13,7 @@ const DescriptionWrapper = styled.div`
 `;
 
 const MainDetails = ({ temp, icon }: any) => {
+  const IconComponent = getIcon(icon);
   return (
     <>
       <div>Current temperature</div>
@@ -26,8 +29,8 @@ const MainDetails = ({ temp, icon }: any) => {
           alignItems: 'center',
         }}
       >
-        <FaSun size={100} />
-        <DescriptionWrapper>{temp} &deg;</DescriptionWrapper>
+        <IconComponent size={100} />
+        <DescriptionWrapper>{Math.round(temp)} &deg;</DescriptionWrapper>
       </FlexWrapper>
     </>
   );

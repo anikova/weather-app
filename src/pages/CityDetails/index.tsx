@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+
+// actions
+import { fetchCity } from '../../actions/cities';
 
 // components
 import FlexWrapper from '../../components/FlexWrapper';
@@ -10,6 +13,9 @@ import { CenteredHeader, StyledLink } from '../../components/SharedComponents';
 import HourlyDetails from './HourlyDetails';
 import MainDetails from './MainDetails';
 import WeeklyDetails from './WeeklyDetails';
+
+// utils
+import { cityCoords } from '../../utils/cityData';
 
 const Wrapper = styled.div`
   width: 70vw;
@@ -27,16 +33,25 @@ const StyledIcon = styled(FaArrowLeft)`
 
 const CityDetails = () => {
   const { name } = useParams<any>();
-  const cities = useSelector((state: any) => state.cities);
+  const dispatch = useDispatch();
+
   const cityDetails = useSelector((state: any) => state.cityDetails);
   const {
-    current: {
-      temp,
-      weather: { icon },
-    },
+    current: { temp, weather },
     hourly,
+    daily,
   } = cityDetails;
 
+  const { icon } = (weather && weather[0]) || { icon: '01d' };
+
+  useEffect(() => {
+    if (cityCoords[name]) {
+      const { lat, lon } = cityCoords[name];
+      // dispatch(fetchCity(lat, lon));
+    }
+  }, []);
+
+  if (!cityCoords[name]) return <div>City not found.</div>;
   return (
     <>
       <StyledLink href="/">
@@ -46,8 +61,8 @@ const CityDetails = () => {
         <CenteredHeader>{name.toUpperCase()}</CenteredHeader>
         <FlexWrapper flexDirection="column" alignItems="center">
           <MainDetails temp={temp} icon={icon} />
-          <HourlyDetails hourly={hourly} />
-          <WeeklyDetails />
+          <HourlyDetails hourly={hourly.slice(0, 24)} />
+          <WeeklyDetails daily={daily} />
         </FlexWrapper>
       </Wrapper>
     </>
