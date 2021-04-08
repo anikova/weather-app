@@ -14,13 +14,13 @@ const initialState = {
 	isLoading: false,
 };
 
-export const cityDetails = (state = initialState, action: any) => {
-	switch (action.type) {
+export const cityDetails = (state = initialState, { type, payload }: any) => {
+	switch (type) {
 		case FetchCityTypes.START: {
 			return { ...state, isLoading: true };
 		}
 		case FetchCityTypes.SUCCESS: {
-			return { ...action.payload, isLoading: false };
+			return { ...payload, isLoading: false };
 		}
 	}
 	return state;

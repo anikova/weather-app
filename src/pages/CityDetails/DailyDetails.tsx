@@ -26,13 +26,16 @@ interface ChartData {
 
 const DailyDetails = ({ daily }: Props) => {
   const [data, setData] = useState<Array<ChartData>>([]);
+
   useEffect(() => {
-    const newData = daily.map((item) => {
-      return {
-        dateTime: moment.unix(item.dt).format('DD/MM'),
-        temperature: Math.round(item.temp.day),
-      };
-    });
+    const newData = daily.map(
+      ({ dt: datetime, temp: { day: temperature } }) => {
+        return {
+          dateTime: moment.unix(datetime).format('DD/MM'),
+          temperature: Math.round(temperature),
+        };
+      }
+    );
     setData(newData);
   }, [daily]);
 

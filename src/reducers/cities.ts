@@ -1,9 +1,9 @@
 import { FetchCitiesTypes } from "../actions/cities";
 
-export const cities = (state = [], action: any) => {
-	switch (action.type) {
+export const cities = (state = [], { type, payload }: any) => {
+	switch (type) {
 		case FetchCitiesTypes.SUCCESS: {
-			return action.payload;
+			return payload;
 		}
 	}
 	return state;
