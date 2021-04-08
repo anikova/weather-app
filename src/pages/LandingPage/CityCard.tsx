@@ -12,7 +12,7 @@ import {
 } from '../../components/SharedComponents';
 
 // utils
-import { getBackground, getIcon } from '../../utils/iconsHelper';
+import { getBackground, getColor, getIcon } from '../../utils/iconsHelper';
 
 const CardWrapper = styled.div<{ icon: string }>`
   position: relative;
@@ -23,7 +23,7 @@ const CardWrapper = styled.div<{ icon: string }>`
   min-width: 300px;
   box-shadow: 0 0 8px 6px lightgray;
   background: ${({ icon }) => icon && getBackground(icon)};
-  color: ${({ icon }) => (icon.indexOf('d') === -1 ? 'white' : 'black')};
+  color: ${({ icon }) => icon && getColor(icon)};
   cursor: pointer;
   transition: all 0.5s;
 
@@ -66,7 +66,7 @@ const CityCard = ({ city }: any) => {
             <FontWrapper fontSize="4rem">{Math.round(temp)} &deg;</FontWrapper>
           </FlexWrapper>
         </FlexWrapper>
-        <LabelsWrapper color={icon.indexOf('d') === -1 ? 'white' : 'black'}>
+        <LabelsWrapper color={getColor(icon)}>
           <PillLabel>{description}</PillLabel>
           <PillLabel>
             <IoMdWater />

@@ -12,7 +12,7 @@ import {
 // components
 import { MarginWrapper } from '../../components/SharedComponents';
 
-const WeeklyDetails = ({ daily }: any) => {
+const DailyDetails = ({ daily }: any) => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const newData = daily.map((x: any) => {
@@ -39,4 +39,4 @@ const WeeklyDetails = ({ daily }: any) => {
   );
 };
 
-export default WeeklyDetails;
+export default DailyDetails;

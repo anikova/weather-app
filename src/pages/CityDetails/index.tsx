@@ -13,7 +13,7 @@ import FlexWrapper from '../../components/FlexWrapper';
 import { CenteredHeader, StyledLink } from '../../components/SharedComponents';
 import HourlyDetails from './HourlyDetails';
 import MainDetails from './MainDetails';
-import WeeklyDetails from './WeeklyDetails';
+import DailyDetails from './DailyDetails';
 
 // utils
 import { cityCoords } from '../../utils/cityData';
@@ -72,7 +72,7 @@ const CityDetails = () => {
           <FlexWrapper flexDirection="column" alignItems="center">
             <MainDetails temp={temp} icon={icon} />
             <HourlyDetails hourly={hourly.slice(0, 24)} />
-            <WeeklyDetails daily={daily} />
+            <DailyDetails daily={daily} />
           </FlexWrapper>
         ) : (
           <CenteredHeader>

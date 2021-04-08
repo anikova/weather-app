@@ -136,3 +136,6 @@ export const getBackground: any = (iconName: string) => {
     }
   }
 };
+
+export const getColor = (icon: string) =>
+  icon.indexOf('d') === -1 ? 'white' : 'black';
