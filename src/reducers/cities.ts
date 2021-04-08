@@ -1,8 +1,8 @@
-import { initialState } from "./mockState";
+import { FetchCitiesTypes } from "../actions/cities";
 
-export const cities = (state = initialState, action: any) => {
+export const cities = (state = [], action: any) => {
 	switch (action.type) {
-		case 'FETCH_CITIES_SUCCESS': {
+		case FetchCitiesTypes.SUCCESS: {
 			return action.payload;
 		}
 	}

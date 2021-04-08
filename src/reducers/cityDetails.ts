@@ -1,9 +1,26 @@
-import { initialStateDetails } from "./mockState";
+import { FetchCityTypes } from "../actions/cities";
 
-export const cityDetails = (state = initialStateDetails, action: any) => {
+const initialState = {
+	current: {
+		temp: 0,
+		weather: [
+			{
+				icon: '',
+			}
+		]
+	},
+	hourly: [],
+	daily: [],
+	isLoading: false,
+};
+
+export const cityDetails = (state = initialState, action: any) => {
 	switch (action.type) {
-		case 'FETCH_CITY_SUCCESS': {
-			return action.payload;
+		case FetchCityTypes.START: {
+			return { ...state, isLoading: true };
+		}
+		case FetchCityTypes.SUCCESS: {
+			return { ...action.payload, isLoading: false };
 		}
 	}
 	return state;

@@ -49,7 +49,7 @@ const HourlyDetails = ({ hourly }: any) => {
           />
         )}
         {displayArray.map(({ dt: dateTime, temp, weather }: any) => {
-          const { icon } = (weather && weather[0]) || { icon: '01d' };
+          const { icon } = weather[0];
           const IconComponent = getIcon(icon);
           return (
             <ItemWrapper

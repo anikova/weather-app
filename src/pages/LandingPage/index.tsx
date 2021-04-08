@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { RiLoader2Fill } from 'react-icons/ri';
 
 // components
 import CityCard from './CityCard';
@@ -17,21 +18,27 @@ const LandingPage = () => {
   const cities = useSelector((state: any) => state.cities);
 
   useEffect(() => {
-    //dispatch(fetchCities(cityNames));
+    dispatch(fetchCities(cityNames));
   }, []);
 
   return (
     <>
       <CenteredHeader>Weather forecast</CenteredHeader>
-      <FlexWrapper
-        flexWrap="wrap"
-        justifyContent="space-evenly"
-        margin="3rem 0 4rem 0"
-      >
-        {cityNames.map((name) => {
-          return <CityCard city={cities[name]} key={name} />;
-        })}
-      </FlexWrapper>
+      {cities.length !== 0 ? (
+        <FlexWrapper
+          flexWrap="wrap"
+          justifyContent="space-evenly"
+          margin="3rem 0 4rem 0"
+        >
+          {cities.map((city: any) => {
+            return <CityCard city={city} key={city.name} />;
+          })}
+        </FlexWrapper>
+      ) : (
+        <CenteredHeader>
+          <RiLoader2Fill />
+        </CenteredHeader>
+      )}
     </>
   );
 };
