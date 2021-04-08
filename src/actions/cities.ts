@@ -2,13 +2,13 @@
 const API_KEY = 'c0b58cef40398aa337d430489640ad58';
 
 export enum FetchCitiesTypes {
-	START = 'FETCH_CITY_START',
-	SUCCESS = 'FETCH_CITY_SUCCESS',
+	START = 'FETCH_CITIES_START',
+	SUCCESS = 'FETCH_CITIES_SUCCESS',
 }
 export const fetchCities = (cityNames: Array<string>) => async (dispatch: any) => {
 	dispatch({ type: FetchCitiesTypes.START })
 	Promise.all(cityNames.map(city => fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`).then(res => res.json()))).then(response => {
-		dispatch({ type: FetchCitiesTypes.START, payload: response})
+		dispatch({ type: FetchCitiesTypes.SUCCESS, payload: response})
 	});
 }
 
