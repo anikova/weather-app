@@ -14,6 +14,9 @@ import {
 // utils
 import { getBackground, getColor, getIcon } from '../../utils/iconsHelper';
 
+// types
+import { CityType } from '../../types/City';
+
 const CardWrapper = styled.div<{ icon: string }>`
   position: relative;
   border: 1px solid gray;
@@ -47,7 +50,11 @@ const LabelsWrapper = styled.div<{ color: string }>`
   color: black;
 `;
 
-const CityCard = ({ city }: any) => {
+interface Props {
+  city: CityType;
+}
+
+const CityCard = ({ city }: Props) => {
   const {
     weather,
     main: { temp, humidity },

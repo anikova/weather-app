@@ -13,9 +13,12 @@ import { fetchCities } from '../../actions/cities';
 // uti;s
 import { cityNames } from '../../utils/cityData';
 
+// types
+import { RootState } from '../../types/RootState';
+
 const LandingPage = () => {
   const dispatch = useDispatch();
-  const cities = useSelector((state: any) => state.cities);
+  const cities = useSelector((state: RootState) => state.cities);
 
   useEffect(() => {
     dispatch(fetchCities(cityNames));
@@ -30,7 +33,7 @@ const LandingPage = () => {
           justifyContent="space-evenly"
           margin="3rem 0 4rem 0"
         >
-          {cities.map((city: any) => {
+          {cities.map((city) => {
             return <CityCard city={city} key={city.name} />;
           })}
         </FlexWrapper>

@@ -12,7 +12,12 @@ const DescriptionWrapper = styled.div`
   margin-left: 5rem;
 `;
 
-const MainDetails = ({ temp, icon }: any) => {
+interface Props {
+  temp: number;
+  icon: string;
+}
+
+const MainDetails = ({ temp, icon }: Props) => {
   const IconComponent = getIcon(icon);
   return (
     <>

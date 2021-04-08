@@ -18,6 +18,9 @@ import DailyDetails from './DailyDetails';
 // utils
 import { cityCoords } from '../../utils/cityData';
 
+// types
+import { RootState } from '../../types/RootState';
+
 const Wrapper = styled.div`
   width: 70vw;
   min-height: 50vh;
@@ -37,7 +40,7 @@ const CityDetails = () => {
   const { name } = useParams<any>();
   const dispatch = useDispatch();
 
-  const cityDetails = useSelector((state: any) => state.cityDetails);
+  const cityDetails = useSelector((state: RootState) => state.cityDetails);
   const [showLoader, setShowLoader] = useState(true);
 
   const {

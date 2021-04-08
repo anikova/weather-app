@@ -10,6 +10,9 @@ import { MarginWrapper } from '../../components/SharedComponents';
 // utils
 import { getIcon } from '../../utils/iconsHelper';
 
+// types
+import { HourlyDetailsType } from '../../types/CityDetails';
+
 const ItemWrapper = styled(FlexWrapper)`
   border: 1px solid black;
   margin: 1rem;
@@ -24,7 +27,11 @@ const StyledIcon = styled(FaArrowRight)`
   cursor: pointer;
 `;
 
-const HourlyDetails = ({ hourly }: any) => {
+interface Props {
+  hourly: Array<HourlyDetailsType>;
+}
+
+const HourlyDetails = ({ hourly }: Props) => {
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(6);
   const [displayArray, setDisplayArray] = useState(
@@ -48,21 +55,23 @@ const HourlyDetails = ({ hourly }: any) => {
             }}
           />
         )}
-        {displayArray.map(({ dt: dateTime, temp, weather }: any) => {
-          const { icon } = weather[0];
-          const IconComponent = getIcon(icon);
-          return (
-            <ItemWrapper
-              key={dateTime}
-              flexDirection="column"
-              alignItems="center"
-            >
-              <span>{moment.unix(dateTime).format('HH:mm')}</span>
-              <IconComponent size={30} />
-              <span>{Math.round(temp)}&deg;</span>
-            </ItemWrapper>
-          );
-        })}
+        {displayArray.map(
+          ({ dt: dateTime, temp, weather }: HourlyDetailsType) => {
+            const { icon } = weather[0];
+            const IconComponent = getIcon(icon);
+            return (
+              <ItemWrapper
+                key={dateTime}
+                flexDirection="column"
+                alignItems="center"
+              >
+                <span>{moment.unix(dateTime).format('HH:mm')}</span>
+                <IconComponent size={30} />
+                <span>{Math.round(temp)}&deg;</span>
+              </ItemWrapper>
+            );
+          }
+        )}
         {endIndex < hourly.length && (
           <StyledIcon
             onClick={() => {

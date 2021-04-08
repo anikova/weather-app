@@ -13,7 +13,7 @@ import {
 import { RiMistFill } from 'react-icons/ri';
 import { AiFillThunderbolt } from 'react-icons/ai';
 
-export const getIcon: any = (iconName: string) => {
+export const getIcon = (iconName: string) => {
   switch (iconName) {
     case '01d': {
       return FaSun;
@@ -75,7 +75,7 @@ export const getIcon: any = (iconName: string) => {
   }
 };
 
-export const getBackground: any = (iconName: string) => {
+export const getBackground = (iconName: string) => {
   switch (iconName) {
     case '01d': {
       return 'linear-gradient(150deg, #ffe500bd 0%, #fd746c8c 70%);';

@@ -12,13 +12,25 @@ import {
 // components
 import { MarginWrapper } from '../../components/SharedComponents';
 
-const DailyDetails = ({ daily }: any) => {
-  const [data, setData] = useState([]);
+// types
+import { DailyDetailsType } from '../../types/CityDetails';
+
+interface Props {
+  daily: Array<DailyDetailsType>;
+}
+
+interface ChartData {
+  dateTime: string;
+  temperature: number;
+}
+
+const DailyDetails = ({ daily }: Props) => {
+  const [data, setData] = useState<Array<ChartData>>([]);
   useEffect(() => {
-    const newData = daily.map((x: any) => {
+    const newData = daily.map((item) => {
       return {
-        dateTime: moment.unix(x.dt).format('DD/MM'),
-        temperature: Math.round(x.temp.day),
+        dateTime: moment.unix(item.dt).format('DD/MM'),
+        temperature: Math.round(item.temp.day),
       };
     });
     setData(newData);
