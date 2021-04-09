@@ -5,7 +5,7 @@ const initialState = {
 		temp: 0,
 		weather: [
 			{
-				icon: '',
+				icon: '01d',
 			}
 		]
 	},

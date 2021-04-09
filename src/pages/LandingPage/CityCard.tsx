@@ -25,7 +25,7 @@ const CardWrapper = styled.div<{ icon: string }>`
   margin: 2rem;
   min-width: 300px;
   box-shadow: 0 0 8px 6px lightgray;
-  background: ${({ icon }) => icon && getBackground(icon)};
+  background: ${({ icon }) => icon && getBackground[icon]};
   color: ${({ icon }) => icon && getColor(icon)};
   cursor: pointer;
   transition: all 0.5s;
@@ -62,7 +62,7 @@ const CityCard = ({ city }: Props) => {
     wind: { speed },
   } = city;
   const { main: description, icon } = weather[0];
-  const IconComponent = getIcon(icon);
+  const IconComponent = getIcon[icon];
   return (
     <CardWrapper icon={icon}>
       <div>
@@ -91,7 +91,9 @@ const CityCard = ({ city }: Props) => {
           left: '33%',
         }}
       >
-        <StyledLink href={`/city-details/${name.toLowerCase()}`}>
+        <StyledLink
+          href={`/city-details/${name.toLowerCase().split(' ').join('-')}`}
+        >
           View details
         </StyledLink>
       </PillLabel>

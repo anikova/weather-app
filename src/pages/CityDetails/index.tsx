@@ -37,7 +37,8 @@ const StyledIcon = styled(FaArrowLeft)`
 `;
 
 const CityDetails = () => {
-  const { name } = useParams<any>();
+  const { cityName } = useParams<any>();
+  const name = cityName.split('-').join(' ');
   const dispatch = useDispatch();
 
   const cityDetails = useSelector((state: RootState) => state.cityDetails);

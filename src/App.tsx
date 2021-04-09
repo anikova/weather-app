@@ -13,7 +13,7 @@ function App() {
     <Router history={history}>
       <Switch>
         <Route exact path="/" component={LandingPage} />
-        <Route path="/city-details/:name" component={CityDetails} />
+        <Route path="/city-details/:cityName" component={CityDetails} />
       </Switch>
     </Router>
   );

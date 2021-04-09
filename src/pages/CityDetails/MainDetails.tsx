@@ -27,7 +27,7 @@ interface Props {
 }
 
 const MainDetails = ({ temp, icon }: Props) => {
-  const IconComponent = getIcon(icon);
+  const IconComponent = getIcon[icon];
   return (
     <>
       <div>Current temperature</div>

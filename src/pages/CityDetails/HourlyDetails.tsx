@@ -58,7 +58,7 @@ const HourlyDetails = ({ hourly }: Props) => {
         {displayArray.map(
           ({ dt: dateTime, temp, weather }: HourlyDetailsType) => {
             const { icon } = weather[0];
-            const IconComponent = getIcon(icon);
+            const IconComponent = getIcon[icon];
             return (
               <ItemWrapper
                 key={dateTime}
