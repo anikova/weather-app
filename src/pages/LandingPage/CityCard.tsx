@@ -17,7 +17,7 @@ import { getBackground, getColor, getIcon } from '../../utils/iconsHelper';
 // types
 import { CityType } from '../../types/City';
 
-const CardWrapper = styled.div<{ icon: string }>`
+const CardWrapper = styled.div<{ color: string; background: any }>`
   position: relative;
   border: 1px solid gray;
   border-radius: 20px;
@@ -25,8 +25,9 @@ const CardWrapper = styled.div<{ icon: string }>`
   margin: 2rem;
   min-width: 300px;
   box-shadow: 0 0 8px 6px lightgray;
-  background: ${({ icon }) => icon && getBackground[icon]};
-  color: ${({ icon }) => icon && getColor(icon)};
+  background: ${({ background: { firstColor, secondColor } }) =>
+    `linear-gradient(150deg, ${firstColor} 0%, ${secondColor} 70%)`};
+  color: ${({ color }) => color};
   cursor: pointer;
   transition: all 0.5s;
 
@@ -62,9 +63,13 @@ const CityCard = ({ city }: Props) => {
     wind: { speed },
   } = city;
   const { main: description, icon } = weather[0];
+
   const IconComponent = getIcon[icon];
+
+  const formattedName = name.toLowerCase().split(' ').join('-');
+
   return (
-    <CardWrapper icon={icon}>
+    <CardWrapper color={getColor(icon)} background={getBackground[icon]}>
       <div>
         <FlexWrapper justifyContent="space-around">
           <IconComponent size={100} />
@@ -91,9 +96,7 @@ const CityCard = ({ city }: Props) => {
           left: '33%',
         }}
       >
-        <StyledLink
-          href={`/city-details/${name.toLowerCase().split(' ').join('-')}`}
-        >
+        <StyledLink href={`/city-details/${formattedName}`}>
           View details
         </StyledLink>
       </PillLabel>
