@@ -90,7 +90,7 @@ export const getBackground = (iconName: string) => {
       return 'linear-gradient(150deg, #000000 0%, #0003135e 70%);';
     }
     case '03d': {
-      return 'linear-gradient(150deg, #00000075 0%, #00031338 70%);';
+      return 'linear-gradient(150deg, #6cd5e2 0%, #010b0c2b 70%);';
     }
     case '03n': {
       return 'linear-gradient(150deg, #000000 0%, #0003134a 70%);';
@@ -114,10 +114,10 @@ export const getBackground = (iconName: string) => {
       return 'linear-gradient(150deg, #000000 0%, #0003135e 70%);';
     }
     case '11d': {
-      return '';
+      return 'linear-gradient(150deg, #00000075 0%, #00031338 70%);';
     }
     case '11n': {
-      return '';
+      return 'linear-gradient(150deg, #000000 0%, #0003135e 70%);';
     }
     case '13d': {
       return 'linear-gradient(150deg, #3474b58c 0%, #153bff26 70%);';
@@ -126,10 +126,10 @@ export const getBackground = (iconName: string) => {
       return 'linear-gradient(150deg, #000000e6 0%, #5e75ef7a 70%);';
     }
     case '50d': {
-      return '';
+      return 'linear-gradient(150deg, #f3e7e78c 0%, #7896a5 70%);';
     }
     case '50n': {
-      return '';
+      return 'linear-gradient(150deg, #01141d 0%, #9e9e9e85 70%);';
     }
     default: {
       return 'linear-gradient(150deg, #ffe500bd 0%, #153bff33 70%);';

@@ -77,10 +77,10 @@ const CityCard = ({ city }: Props) => {
           <PillLabel>{description}</PillLabel>
           <PillLabel>
             <IoMdWater />
-            {humidity}
+            {humidity} %
           </PillLabel>
           <PillLabel>
-            <FaWind /> {speed} km/h
+            <FaWind /> {speed} m/s
           </PillLabel>
         </LabelsWrapper>
       </div>
