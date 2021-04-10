@@ -96,7 +96,7 @@ const CityCard = ({ city }: Props) => {
           left: '33%',
         }}
       >
-        <StyledLink href={`/weather-app/city-details/${formattedName}`}>
+        <StyledLink to={`/city-details/${formattedName}`}>
           View details
         </StyledLink>
       </PillLabel>

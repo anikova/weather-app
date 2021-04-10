@@ -1,8 +1,5 @@
 import React from 'react';
-import { Router, Switch, Route } from 'react-router-dom';
-
-// utils
-import history from './utils/history';
+import { Router, Switch, Route, HashRouter } from 'react-router-dom';
 
 // pages
 import CityDetails from './pages/CityDetails';
@@ -10,16 +7,13 @@ import LandingPage from './pages/LandingPage';
 
 function App() {
   return (
-    <Router history={history}>
+    <HashRouter>
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/weather-app" component={LandingPage} />
-        <Route
-          path="/weather-app/city-details/:cityName"
-          component={CityDetails}
-        />
+        <Route exact path="/city-details/:cityName/" component={CityDetails} />
       </Switch>
-    </Router>
+    </HashRouter>
   );
 }
 
