@@ -67,7 +67,7 @@ const CityDetails = () => {
   if (!cityCoords[name]) return <div>City not found.</div>;
   return (
     <>
-      <StyledLink href="/">
+      <StyledLink href="/weather-app">
         <StyledIcon size={30} />
       </StyledLink>
       <Wrapper>

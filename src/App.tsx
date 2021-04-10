@@ -13,7 +13,11 @@ function App() {
     <Router history={history}>
       <Switch>
         <Route exact path="/" component={LandingPage} />
-        <Route path="/city-details/:cityName" component={CityDetails} />
+        <Route exact path="/weather-app" component={LandingPage} />
+        <Route
+          path="/weather-app/city-details/:cityName"
+          component={CityDetails}
+        />
       </Switch>
     </Router>
   );
