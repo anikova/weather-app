@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaWind } from 'react-icons/fa';
-import { IoMdWater } from 'react-icons/io';
+import { GiWaterDrop } from 'react-icons/gi';
 
 // components
 import FlexWrapper from '../../components/FlexWrapper';
@@ -81,7 +81,7 @@ const CityCard = ({ city }: Props) => {
         <LabelsWrapper color={getColor(icon)}>
           <PillLabel>{description}</PillLabel>
           <PillLabel>
-            <IoMdWater />
+            <GiWaterDrop />
             {humidity} %
           </PillLabel>
           <PillLabel>

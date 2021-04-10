@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaArrowLeft, FaArrowRight, FaSun } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import styled from 'styled-components';
 import moment from 'moment';
 
