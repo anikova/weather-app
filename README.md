@@ -12,7 +12,7 @@ This is a React application that uses the Open Weather API to display the curren
 ## Examples
 
 ## Running the project
-To view this application, you can visit this [LINK](https://anikova.github.io/weather-app) for a demo version or you can run the following commands in the terminal and open [http://localhost:3000](http://localhost:3000) in the browser.
+To view this application, you can visit this [link](https://anikova.github.io/weather-app) for a demo version or you can run the following commands in the terminal and open [http://localhost:3000](http://localhost:3000) in the browser.
 
 ### `yarn install`
 
@@ -23,5 +23,6 @@ To view this application, you can visit this [LINK](https://anikova.github.io/we
 * redux
 * styled-components
 * recharts
+* react-router-dom
 
 
