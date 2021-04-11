@@ -38,6 +38,7 @@ const StyledIcon = styled(FaArrowLeft)`
 
 const CityDetails = () => {
   const { cityName } = useParams<any>();
+  // in case the city name has an empty space, the dash symbol is added and it needs to be removed
   const name = cityName.split('-').join(' ');
   const dispatch = useDispatch();
 
@@ -55,6 +56,8 @@ const CityDetails = () => {
 
   useEffect(() => {
     if (cityCoords[name]) {
+      // we need previously defined latitude and longitude in the config in order to make the API call
+      // we could use the selected city from the previous page, but in that case it wouldn't work on page refresh
       const { lat, lon } = cityCoords[name];
       dispatch(fetchCity(lat, lon));
     }

@@ -39,6 +39,7 @@ const HourlyDetails = ({ hourly }: Props) => {
   );
 
   useEffect(() => {
+    // adds the items that need to be visible in the current view
     setDisplayArray(hourly.slice(startIndex, endIndex));
   }, [startIndex, endIndex, hourly]);
 

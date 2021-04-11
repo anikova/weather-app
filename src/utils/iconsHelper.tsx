@@ -12,6 +12,7 @@ import {
 import { RiMistFill } from 'react-icons/ri';
 import { AiFillThunderbolt } from 'react-icons/ai';
 
+// based on the icon value returned from the API, a similar icon is returned, in order to be aligned with the design
 export const getIcon: Record<string, any> = {
   '01d': FaSun,
   '01n': FaMoon,
@@ -33,6 +34,7 @@ export const getIcon: Record<string, any> = {
   '50n': RiMistFill,
 };
 
+// based on the icon value returned from the API that indicates the weather and time of the day, appropriate background colors are returned
 export const getBackground: Record<string, any> = {
   '01d': { firstColor: '#ffe500bd', secondColor: '#fd746c8c' },
   '01n': { firstColor: '#000000', secondColor: '#0003135e' },
@@ -54,5 +56,6 @@ export const getBackground: Record<string, any> = {
   '50n': { firstColor: '#01141d', secondColor: '#9e9e9e85' },
 };
 
+// based on the time of the day, the appropriate color is returned in order to be aligned with the background
 export const getColor = (icon: string) =>
   icon.indexOf('d') === -1 ? 'white' : 'black';

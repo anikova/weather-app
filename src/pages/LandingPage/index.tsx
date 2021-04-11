@@ -21,6 +21,7 @@ const LandingPage = () => {
   const cities = useSelector((state: RootState) => state.cities);
 
   useEffect(() => {
+    // we need previously defined city names in the config in order to make the API call
     dispatch(fetchCities(cityNames));
   }, []);
 

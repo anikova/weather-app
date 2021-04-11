@@ -65,7 +65,7 @@ const CityCard = ({ city }: Props) => {
   const { main: description, icon } = weather[0];
 
   const IconComponent = getIcon[icon];
-
+  // in case the city name has an empty space, the dash symbol is added
   const formattedName = name.toLowerCase().split(' ').join('-');
 
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Switch, Route, HashRouter } from 'react-router-dom';
+import { Switch, Route, HashRouter } from 'react-router-dom';
 
 // pages
 import CityDetails from './pages/CityDetails';

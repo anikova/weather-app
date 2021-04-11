@@ -8,6 +8,7 @@ interface Props {
   margin?: string;
 }
 
+// enables to reuse the boilerplate needed to create a flexbox wrapper and pass the different props in a clean way
 const FlexWrapper = styled.div<Props>`
   display: flex;
   ${({ flexDirection }) => flexDirection && `flex-direction: ${flexDirection};`}
