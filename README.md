@@ -9,8 +9,6 @@ This is a React application that uses the Open Weather API to display the curren
 * Each city is displayed in a card, with appropriate icon and backgroud, based on the current weather and time
 * By clicking on the card, the details for the city are displayed - current weather, hourly and daily details
 
-## Examples
-
 ## Project structure
 * pages - each route has a separate folder, with the main container and the components used in that container
 * components - shared components between the pages
